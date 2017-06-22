@@ -21,7 +21,9 @@ export const store = new Vuex.Store({
             });
         },
         registrations(state) {
-            return state.registrations;
+            return state.registrations.filter(user => {
+                return user.registered;
+            });
         },
         totalRegistrations(state) {
             return state.registrations.length;
