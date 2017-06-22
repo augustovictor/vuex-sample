@@ -16,7 +16,8 @@ import {mapGetters} from 'vuex';
 export default {
     methods: {
         register(user) {
-            this.$store.commit('register', user.id);
+            // this.$store.commit('register', user.id);
+            this.$store.dispatch('register', user.id);
         }
     },
     computed: {

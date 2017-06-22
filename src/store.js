@@ -14,7 +14,7 @@ export const store = new Vuex.Store({
             {id: 5, name: 'Person 5', registered: false},
         ]
     },
-    getters: {
+    getters: { // Get values from state
         unregisteredUsers(state) {
             return state.users.filter(user => {
                 return !user.registered;
@@ -32,7 +32,7 @@ export const store = new Vuex.Store({
             return state.users.length;
         }
     },
-    mutations: { // Better way to manipulate the states in store
+    mutations: { // Better way to manipulate the states in store and they must run synchronously
         register(state, userId) {
             let user = state.users.find(user => {
                 return user.id == userId;
@@ -49,6 +49,15 @@ export const store = new Vuex.Store({
             user.registered = false;
             state.registrations.splice(state.registrations.indexOf(user), 1);
             state.users.push(user);
+        }
+    },
+    actions: { // Async operations. Often they are named as mutation methods because they work as a middleware before committing the mutations
+        register(context, userId) {
+        // register({commit}, userId) {
+            setTimeout(() => {
+                context.commit('register', userId); // This is the mutation register
+                // commit('register', userId); // This is the mutation register
+            }, 1000);
         }
     }
 });
