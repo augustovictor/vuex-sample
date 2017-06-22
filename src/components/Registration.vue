@@ -3,7 +3,7 @@
         <h1>Not registered users [{{unregisteredCount}}] </h1>
         <ul>
             <li v-for="user in users">
-                {{user.name}} - <a href="#" @click.prevent="register(user)">Register</a>
+                {{user.id}} - {{user.name}} - <a href="#" @click.prevent.stop="register(user)">Register</a>
             </li>
         </ul>
     </div>
