@@ -16,12 +16,7 @@ import {mapGetters} from 'vuex'
 export default {
     methods: {
         unregister(userToUnregister) {
-            const user = this.$store.state.registrations.find(user => {
-                return user.id === userToUnregister.id;
-            });
-            user.registered = false;
-            this.$store.state.registrations.splice(this.$store.state.registrations.indexOf(user), 1);
-            this.$store.state.users.push(user);
+            this.$store.commit('unregister', userToUnregister.id);
         }
     },
     computed: {

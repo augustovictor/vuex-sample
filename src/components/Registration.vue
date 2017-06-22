@@ -16,9 +16,7 @@ import {mapGetters} from 'vuex';
 export default {
     methods: {
         register(user) {
-            user.registered = true;
-            this.$store.state.registrations.push(user);
-            this.$store.state.users.splice(this.$store.state.users.indexOf(user), 1);
+            this.$store.commit('register', user.id);
         }
     },
     computed: {
